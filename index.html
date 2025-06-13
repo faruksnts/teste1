@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Nosso Amor</title>
     <style>
         body {
@@ -38,6 +41,19 @@
         audio {
             display: none; /* Esconde o player de áudio */
         }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #ff8e53;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #ff6b6b;
+        }
         @media (max-width: 600px) {
             h1 {
                 font-size: 1.8em;
@@ -56,9 +72,22 @@
     <h1>Para Minha Namorada Especial</h1>
     <p>Te amo mais do que as palavras podem expressar!</p>
     <img src="https://i.imgur.com/d9nG5CD.jpg" alt="Nossa foto juntos">
-    <audio autoplay loop>
+    <audio id="background-audio" loop>
         <source src="https://files.catbox.moe/34josd.mp3" type="audio/mpeg">
         Seu navegador não suporta áudio HTML5.
     </audio>
+    <button onclick="playAudio()">Tocar Música</button>
+    <script>
+        function playAudio() {
+            const audio = document.getElementById('background-audio');
+            audio.play().catch(error => {
+                console.log('Erro ao tocar áudio:', error);
+            });
+        }
+        // Tenta tocar o áudio automaticamente na carga da página
+        window.onload = function() {
+            playAudio();
+        };
+    </script>
 </body>
 </html>
